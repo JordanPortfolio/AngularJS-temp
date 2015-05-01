@@ -36,11 +36,23 @@
       <input type="text" ng-model="user.name" />
     </label>
     <label>
-      Select name
-      <select ng-model="user.name">
-        <option value="Alex">Alex</option>
-        <option value="David">David</option>
-        <option value="Laura">Laura</option>
+      Your Age
+      <input type="number" ng-model="user.age" />
+    </label>
+    <label>
+      Your Email
+      <input type="email" ng-model="user.email" />
+    </label>
+    <label>
+      Active?
+      <input type="checkbox" ng-model="user.active" />
+    </label>
+    <label>
+      Your Role
+      <select ng-model="user.role">
+        <option value="visitor">Visitor</option>
+        <option value="member">Member</option>
+        <option value="admin">Admin</option>
       </select>
     </label>
   </div>
