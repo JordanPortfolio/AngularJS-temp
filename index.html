@@ -1,7 +1,5 @@
 <html ng-app="treehouseCourse">
 <head>
-    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome.css">
     <style type="text/css">
         .main, .debug {
             width: 48%;
@@ -15,36 +13,72 @@
             float: right;
         }
 
-        .fields label {
+        #people li {
             display: block;
             margin-bottom: 1.5em;
+        }
+
+        #people li .name {
             font-weight: bold;
+            margin-right: 1em;
         }
 
-        .fields label input, .fields label select {
-            font-weight: normal;
+        #people li .profession {
+            margin-right: 1em;
+        }
+
+        #people li .hometown {
+            font-style: italic;
+        }
+
+        #people li button {
             margin-left: 1em;
-        }
-
-        .textarea {
-            width: 100%;
-            min-height: 250px;
         }
     </style>
 </head>
-<body ng-controller="stageTwoCtrl">
+<body ng-controller="stageCtrl">
 <div class="main">
-    <div class="textarea" ng-model="user.bio" hallo></div>
+    <ul id="people">
+        <li ng-repeat="person in people" ng-class="person.profession">
+          <span class="name">
+            {{person.name}}
+          </span>
+          <span class="profession">
+            {{person.profession}}
+          </span>
+          <span class="hometown">
+            {{person.hometown}}
+          </span>
+            <button ng-click="edit(person)">Edit</button>
+            <button ng-click="remove(person)">Remove</button>
+        </li>
+    </ul>
+    <button ng-click="add()">Add</button>
+    <form class="fields">
+        <label>
+            Name:
+            <input type="text" ng-model="editingPerson.name" />
+        </label>
+        <label>
+            Profession:
+            <input type="text" ng-model="editingPerson.profession" />
+        </label>
+        <label>
+            Hometown:
+            <input type="text" ng-model="editingPerson.hometown" />
+        </label>
+        <label>
+            Email addresses:
+            <input type="text" ng-model="editingPerson.emails" ng-list />
+        </label>
+    </form>
 </div>
 <div class="debug">
-      <pre ng-bind="user | json">
+      <pre ng-bind="people | json">
       </pre>
 </div>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script type="text/javascript" src="//rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
-<script type="text/javascript" src="hallo.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
