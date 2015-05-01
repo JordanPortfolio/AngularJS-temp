@@ -22,7 +22,7 @@ angular.module('treehouseCourse', [])
                 ngModelCtrl.$render = function () {
                     var contents = ngModelCtrl.$viewValue;
                     $element.hallo('setContents', contents);
-                }
+                };
 
                 $element.on('hallomodified', function () {
                     var contents = $element.hallo('getContents');
